@@ -1,4 +1,3 @@
 #sls
 java:
-  pkg.installed:
-    - java
+  pkg.installed
