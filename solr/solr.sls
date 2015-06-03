@@ -21,7 +21,7 @@ solr_source:
 solr_collection1:
   cmd.run:
     - name: cp -rp /opt/solr-{{ solr_version }}/example /opt/solr-{{ solr_version }}/cluster1
-    - unless: file /opt/solr-{{ solr_version }}/cluster1
+    - unless: test -d /opt/solr-{{ solr_version }}/cluster1
     - require:
       - cmd: solr_source
 
