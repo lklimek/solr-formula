@@ -5,8 +5,6 @@
 {% set solr_version = salt['pillar.get']('solr:version', '4.4.0') %}
 {% set solr_file_hash = salt['pillar.get']('solr:hash', 'md5=6ae4f981a7e5e79fd5fc3675e19602f3') %}
 
-include:
-  - .jdk
 
 solr_source:
   file.managed:
