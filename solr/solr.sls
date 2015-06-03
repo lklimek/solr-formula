@@ -14,7 +14,7 @@ solr_source:
   cmd.run:
     - name: tar -xf /opt/solr-{{ solr_version }}.tgz
     - cwd: /opt
-    - unless: file /opt/solr-{{ solr_version }}
+    - unless: test -d /opt/solr-{{ solr_version }}
     - require:
       - file: solr_source
 
