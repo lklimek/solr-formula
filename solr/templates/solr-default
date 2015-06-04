@@ -8,8 +8,8 @@ JAVA_OPTIONS="-Dbootstrap_confdir=/opt/solr-{{ solr_version }}/cluster1/solr/col
  
 JETTY_HOME=/opt/solr-{{ solr_version }}/cluster1
  
-JETTY_USER=root
+JETTY_USER=solr
  
-JETTY_GROUP=root
+JETTY_GROUP=solr
  
 JETTY_LOGS=/var/log/solr
