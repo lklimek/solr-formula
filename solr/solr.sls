@@ -38,6 +38,7 @@ solr_collection1:
       
 solr_collection1_perms:
   file.directory:
+    - name: /opt/solr-{{ solr_version }}/cluster1
     - user: solr
     - group: solr
     - dir_mode: 0755
@@ -55,6 +56,7 @@ solr_log:
   file.directory:
     - name: /var/log/solr
     - mode: 777
+    - user: solr
 
 
 solr_default:
@@ -98,6 +100,7 @@ solr_service:
       - user: solr
       - group: solr
       - file: solr_init
+      - file: solr_collection1_perms
       - cmd: solr_collection1
       - file: solr_default
       - file: solr_log
