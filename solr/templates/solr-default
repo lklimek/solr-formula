@@ -4,7 +4,7 @@
 
 JAVA_HOME=/usr/lib/jvm/releases/jdk1.7.0_21/
  
-JAVA_OPTIONS="-Dbootstrap_confdir=/opt/solr-{{ solr_version }}/cluster1/solr/collection1/conf -Dcollection.configName=VidiConfigTest -DzkHost={{ zookeeper_ip }}:2181 -DnumShards=1 -Dhost={{ solr_hostname }}"
+JAVA_OPTIONS="-Dbootstrap_confdir=/opt/solr-{{ solr_version }}/cluster1/solr/collection1/conf -DnumShards=1 -Dhost={{ solr_hostname }}"
  
 JETTY_HOME=/opt/solr-{{ solr_version }}/cluster1
  
