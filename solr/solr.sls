@@ -10,6 +10,7 @@ solr:
     - present
   user:
     - present
+    - createhome: False
     - home: /opt/solr-{{ solr_version }}/cluster1
     - groups:
       - solr
