@@ -9,7 +9,8 @@ solr:
   group:
     - present
   user:
-    - present 
+    - present
+    - home: /opt/solr-{{ solr_version }}/cluster1
     - groups:
       - solr
     - require:
@@ -21,7 +22,7 @@ solr_source:
     - source: http://archive.apache.org/dist/lucene/solr/{{ solr_version }}/solr-{{ solr_version }}.tgz
     - source_hash: {{ solr_file_hash }}
   cmd.run:
-    - name: tar -xf /opt/solr-{{ solr_version }}.tgz
+    - name: tar --owner solr -xf /opt/solr-{{ solr_version }}.tgz
     - cwd: /opt
     - unless: test -d /opt/solr-{{ solr_version }}
     - require:
@@ -71,7 +72,7 @@ solr_config:
 solr_init:
   file.managed:
     - name: /etc/init.d/solr
-    - mode: 777
+    - mode: 775
     - source: salt://solr/files/solr-init
 
 solr_service:
@@ -79,6 +80,8 @@ solr_service:
     - name: solr
     - running
     - require:
+      - user: solr
+      - group: solr
       - file: solr_init
       - cmd: solr_collection1
       - file: solr_default
