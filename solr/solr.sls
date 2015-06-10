@@ -23,7 +23,7 @@ solr_source:
     - source: http://archive.apache.org/dist/lucene/solr/{{ solr_version }}/solr-{{ solr_version }}.tgz
     - source_hash: {{ solr_file_hash }}
   cmd.run:
-    - name: tar --owner solr -xf /opt/solr-{{ solr_version }}.tgz
+    - name: tar -xf /opt/solr-{{ solr_version }}.tgz
     - cwd: /opt
     - unless: test -d /opt/solr-{{ solr_version }}
     - require:
@@ -35,7 +35,19 @@ solr_collection1:
     - unless: test -d /opt/solr-{{ solr_version }}/cluster1
     - require:
       - cmd: solr_source
-
+  file.directory:
+    - user: solr
+    - group: solr
+    - dir_mode: 0755
+    - file_mode: 0644
+    - recurse:
+      - user
+      - group
+      - mode
+    - require:
+      - cmd: solr_collection1
+      - user: solr
+      
 
 solr_log:
   file.directory:
