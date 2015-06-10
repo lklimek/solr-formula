@@ -35,6 +35,8 @@ solr_collection1:
     - unless: test -d /opt/solr-{{ solr_version }}/cluster1
     - require:
       - cmd: solr_source
+      
+solr_collection1_perms:
   file.directory:
     - user: solr
     - group: solr
